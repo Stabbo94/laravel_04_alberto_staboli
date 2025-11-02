@@ -1,0 +1,51 @@
+<x-layout>
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+      </svg>
+      <a class="navbar-brand fw-semibold px-2" href="#">Tutto Servizi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/welcome">Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/chisiamo">Chi Siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/servizi">Servizi</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container-fluid bg-dark-subtle text-light-emphasis text-center py-3">
+    <h1>I membri del nostro team</h1>
+  </div>
+  
+  <section>
+    <div class="container py-5">
+      <div class="row">
+        @foreach ($users as $user)
+        <div class="col-12 d-flex flex-wrap my-3 mx-1">
+          <div class="card mx-auto" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{$user['name'] . " " . $user['surname']}}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{$user['role']}}</h6>
+              <a href="{{route('chisiamo-detail', ['name'=>$user['name']])}}" class="card-link">Vai al dettaglio</a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  
+</x-layout>
