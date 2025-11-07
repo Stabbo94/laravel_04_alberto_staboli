@@ -13,3 +13,7 @@ Route::get('/chisiamo-detail/{name}', [PublicController::class, 'chisiamodetail'
 
 Route::get('/servizi', [PublicController::class, 'servizi'])->name('servizi');
 
+//Invio email nuova rotta
+
+Route::post('/contact-us', [PublicController::class, 'contactUs'])->name('contactUs');
+

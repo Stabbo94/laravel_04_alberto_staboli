@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller{
     public function homepage(){
@@ -53,6 +55,17 @@ public function servizi (){
         ['id'=> '5', 'tipologia'=>'Consulenza di interior design', 'descrizione'=>'I nostri architetti e consulenti di interior design saranno a vostra completa disposizione per disegnare la abitazione dei vostri sogni.', 'img'=>'/media/interiordesign.jpg']
     ];
     return view('pagina2', ['services'=>$services]);
+}
+
+public function contactUs(Request $request)
+{
+ $user = $request->input('user');
+ $email = $request->input('email');
+ $message = $request->input('message');
+
+ Mail::to($email)->send(new ContactMail());
+ return back()->with('emailSent', 'Mail correttamente inviata');
+
 }
 
 };
